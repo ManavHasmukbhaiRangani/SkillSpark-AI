@@ -24,10 +24,10 @@ from backend.ai.claude_client import (
     ClaudeAPIError,
     ClaudeParseError,
     ClaudeRateLimitError,
-    GAP_ANALYSIS_SYSTEM,
-    PATHWAY_SYSTEM,
 )
 from backend.ai.prompts import (
+    GAP_ANALYSIS_SYSTEM,   # ← add this
+    PATHWAY_SYSTEM,        # ← add this
     build_gap_analysis_prompt,
     build_pathway_prompt,
     build_fallback_trace,
