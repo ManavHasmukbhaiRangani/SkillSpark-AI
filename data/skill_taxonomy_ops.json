@@ -1,0 +1,209 @@
+{
+  "metadata": {
+    "source": "Custom Ops Ontology — derived from O*NET 30.1",
+    "version": "1.0",
+    "release_date": "2025",
+    "license": "Creative Commons CC-BY 4.0",
+    "domain": "ops",
+    "description": "Operational and blue-collar skill taxonomy for warehouse, logistics, and field roles"
+  },
+  "skills": {
+    "warehouse_safety": {
+      "onet_code": "2.B.1.a",
+      "canonical_name": "warehouse_safety",
+      "display_name": "Warehouse Safety",
+      "aliases": [
+        "workplace safety", "osha safety", "safety procedures",
+        "safety compliance", "hazard identification",
+        "safety regulations", "ppe", "personal protective equipment",
+        "safety training", "occupational safety"
+      ],
+      "category": "safety",
+      "subcategory": "workplace_safety",
+      "certifications": ["OSHA_10", "OSHA_30"]
+    },
+    "pallet_handling": {
+      "onet_code": "2.B.1.b",
+      "canonical_name": "pallet_handling",
+      "display_name": "Pallet Handling",
+      "aliases": [
+        "pallet jack", "hand truck", "material handling",
+        "loading", "unloading", "stacking", "pallet stacking",
+        "manual handling", "freight handling", "cargo handling"
+      ],
+      "category": "physical_operations",
+      "subcategory": "material_handling"
+    },
+    "forklift_operation": {
+      "onet_code": "2.B.1.c",
+      "canonical_name": "forklift_operation",
+      "display_name": "Forklift Operation",
+      "aliases": [
+        "forklift", "forklift operator", "lift truck",
+        "powered industrial truck", "reach truck",
+        "sit down forklift", "stand up forklift",
+        "counterbalance forklift", "cherry picker"
+      ],
+      "category": "equipment_operation",
+      "subcategory": "industrial_vehicles",
+      "certifications": ["OSHA_forklift"]
+    },
+    "inventory_management": {
+      "onet_code": "2.B.2.a",
+      "canonical_name": "inventory_management",
+      "display_name": "Inventory Management",
+      "aliases": [
+        "stock control", "inventory control", "cycle counting",
+        "stock management", "inventory tracking", "stockroom",
+        "warehouse management", "wms", "stock replenishment",
+        "inventory systems", "barcode scanning"
+      ],
+      "category": "logistics",
+      "subcategory": "inventory"
+    },
+    "quality_control": {
+      "onet_code": "2.B.2.b",
+      "canonical_name": "quality_control",
+      "display_name": "Quality Control",
+      "aliases": [
+        "quality assurance", "qa", "qc", "inspection",
+        "defect identification", "quality standards",
+        "quality checks", "product inspection",
+        "quality management", "iso standards"
+      ],
+      "category": "quality",
+      "subcategory": "inspection"
+    },
+    "first_aid": {
+      "onet_code": "2.B.1.d",
+      "canonical_name": "first_aid",
+      "display_name": "First Aid & Emergency Response",
+      "aliases": [
+        "cpr", "first aid", "emergency response",
+        "basic life support", "bls", "aed",
+        "emergency procedures", "medical emergency",
+        "first responder", "workplace first aid"
+      ],
+      "category": "safety",
+      "subcategory": "emergency_response",
+      "certifications": ["First_Aid_CPR", "BLS"]
+    },
+    "team_leadership": {
+      "onet_code": "2.A.1.b",
+      "canonical_name": "team_leadership",
+      "display_name": "Team Leadership",
+      "aliases": [
+        "team management", "people management", "supervision",
+        "team lead", "shift supervisor", "crew leader",
+        "floor supervisor", "team coordinator",
+        "managing people", "staff management"
+      ],
+      "category": "management",
+      "subcategory": "people_management"
+    },
+    "communication": {
+      "onet_code": "2.A.1.e",
+      "canonical_name": "communication",
+      "display_name": "Professional Communication",
+      "aliases": [
+        "written communication", "verbal communication",
+        "radio communication", "team communication",
+        "interpersonal skills", "reporting",
+        "documentation", "record keeping"
+      ],
+      "category": "soft_skills",
+      "subcategory": "communication"
+    },
+    "time_management": {
+      "onet_code": "2.A.1.d",
+      "canonical_name": "time_management",
+      "display_name": "Time Management",
+      "aliases": [
+        "scheduling", "prioritisation", "task management",
+        "deadline management", "efficiency",
+        "productivity", "workload management",
+        "shift management", "time keeping"
+      ],
+      "category": "soft_skills",
+      "subcategory": "self_management"
+    },
+    "equipment_maintenance": {
+      "onet_code": "2.B.4.a",
+      "canonical_name": "equipment_maintenance",
+      "display_name": "Equipment Maintenance",
+      "aliases": [
+        "machine maintenance", "preventive maintenance",
+        "equipment inspection", "machinery operation",
+        "mechanical maintenance", "equipment repair",
+        "maintenance procedures", "troubleshooting equipment"
+      ],
+      "category": "technical_operations",
+      "subcategory": "maintenance"
+    },
+    "supply_chain": {
+      "onet_code": "2.B.2.c",
+      "canonical_name": "supply_chain",
+      "display_name": "Supply Chain Management",
+      "aliases": [
+        "supply chain", "logistics", "procurement",
+        "vendor management", "shipping", "receiving",
+        "distribution", "freight", "dispatch",
+        "order fulfilment", "last mile delivery"
+      ],
+      "category": "logistics",
+      "subcategory": "supply_chain"
+    },
+    "data_entry": {
+      "onet_code": "2.B.3.a",
+      "canonical_name": "data_entry",
+      "display_name": "Data Entry & Record Keeping",
+      "aliases": [
+        "data entry", "record keeping", "documentation",
+        "filing", "data recording", "computer entry",
+        "spreadsheet entry", "database entry",
+        "administrative tasks", "clerical work"
+      ],
+      "category": "administrative",
+      "subcategory": "data_entry"
+    },
+    "customer_service": {
+      "onet_code": "2.A.1.c",
+      "canonical_name": "customer_service",
+      "display_name": "Customer Service",
+      "aliases": [
+        "customer support", "client service", "customer relations",
+        "customer interaction", "complaint handling",
+        "customer satisfaction", "service delivery",
+        "client communication", "customer care"
+      ],
+      "category": "service",
+      "subcategory": "customer_relations"
+    },
+    "physical_fitness": {
+      "onet_code": "2.B.1.e",
+      "canonical_name": "physical_fitness",
+      "display_name": "Physical Fitness & Stamina",
+      "aliases": [
+        "physical stamina", "lifting", "heavy lifting",
+        "standing for long periods", "physical endurance",
+        "manual labour", "physical work",
+        "strength", "physical demands"
+      ],
+      "category": "physical_operations",
+      "subcategory": "physical_ability"
+    },
+    "compliance": {
+      "onet_code": "2.C.1.b",
+      "canonical_name": "compliance",
+      "display_name": "Regulatory Compliance",
+      "aliases": [
+        "compliance", "regulatory compliance", "legal compliance",
+        "health and safety compliance", "industry regulations",
+        "workplace regulations", "audit compliance",
+        "policy adherence", "standard operating procedures", "sop"
+      ],
+      "category": "regulatory",
+      "subcategory": "compliance"
+    }
+  }
+}
