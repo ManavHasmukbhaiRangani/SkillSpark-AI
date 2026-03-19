@@ -205,3 +205,59 @@ cython_debug/
 marimo/_static/
 marimo/_lsp/
 __marimo__/
+
+# ── Additional: PathForge specific ──
+
+# Environment variables (never commit real keys)
+.env
+.env.local
+.env.production
+.env.development
+
+# Python virtual environment
+backend/venv/
+backend/.venv/
+venv/
+.venv/
+
+# spaCy + ML downloaded models
+backend/models/
+*.pkl
+*.pt
+*.bin
+*.onnx
+
+# Frontend
+frontend/node_modules/
+frontend/dist/
+frontend/build/
+frontend/.env
+frontend/.env.local
+
+# VS Code workspace settings (personal, not team)
+.vscode/settings.json
+.vscode/launch.json
+
+# OS files
+.DS_Store
+.DS_Store?
+Thumbs.db
+desktop.ini
+
+# Validation outputs (generated, not source)
+validation/results/
+data/sample_resumes/
+
+# Docker
+*.log
+docker-data/
+
+# Pytest cache
+.pytest_cache/
+htmlcov/
+.coverage
+
+# Build artifacts
+dist/
+build/
+*.egg-info/
