@@ -1,0 +1,200 @@
+{
+  "metadata": {
+    "source": "O*NET 30.1",
+    "version": "30.1",
+    "release_date": "December 2025",
+    "license": "Creative Commons CC-BY 4.0",
+    "url": "https://www.onetcenter.org/database.html",
+    "domain": "tech",
+    "description": "Technology and desk-job skill taxonomy derived from O*NET database"
+  },
+  "skills": {
+    "python": {
+      "onet_code": "2.B.3.b",
+      "canonical_name": "python",
+      "display_name": "Python Programming",
+      "aliases": [
+        "python3", "python programming", "python development",
+        "python scripting", "py"
+      ],
+      "category": "programming",
+      "subcategory": "scripting_languages"
+    },
+    "sql": {
+      "onet_code": "2.B.3.d",
+      "canonical_name": "sql",
+      "display_name": "SQL & Databases",
+      "aliases": [
+        "structured query language", "mysql", "postgresql",
+        "sqlite", "database querying", "relational databases",
+        "sql server", "oracle sql"
+      ],
+      "category": "data",
+      "subcategory": "databases"
+    },
+    "machine_learning": {
+      "onet_code": "2.C.7.e",
+      "canonical_name": "machine_learning",
+      "display_name": "Machine Learning",
+      "aliases": [
+        "ml", "machine learning", "ml engineering",
+        "predictive modeling", "statistical learning",
+        "supervised learning", "unsupervised learning"
+      ],
+      "category": "ai_ml",
+      "subcategory": "machine_learning"
+    },
+    "deep_learning": {
+      "onet_code": "2.C.7.f",
+      "canonical_name": "deep_learning",
+      "display_name": "Deep Learning",
+      "aliases": [
+        "dl", "neural networks", "deep neural networks",
+        "cnn", "rnn", "transformer", "pytorch", "tensorflow",
+        "keras", "artificial neural networks"
+      ],
+      "category": "ai_ml",
+      "subcategory": "deep_learning"
+    },
+    "data_analysis": {
+      "onet_code": "2.C.7.a",
+      "canonical_name": "data_analysis",
+      "display_name": "Data Analysis",
+      "aliases": [
+        "data analytics", "data wrangling", "data cleaning",
+        "exploratory data analysis", "eda", "pandas",
+        "numpy", "data manipulation", "data processing"
+      ],
+      "category": "data",
+      "subcategory": "analysis"
+    },
+    "data_visualization": {
+      "onet_code": "2.C.7.b",
+      "canonical_name": "data_visualization",
+      "display_name": "Data Visualization",
+      "aliases": [
+        "data viz", "matplotlib", "seaborn", "plotly",
+        "tableau", "power bi", "dashboards", "charts",
+        "reporting", "business intelligence"
+      ],
+      "category": "data",
+      "subcategory": "visualization"
+    },
+    "statistics": {
+      "onet_code": "2.C.4.e",
+      "canonical_name": "statistics",
+      "display_name": "Statistics & Probability",
+      "aliases": [
+        "statistical analysis", "probability", "statistical modeling",
+        "hypothesis testing", "regression analysis", "statistical inference",
+        "descriptive statistics", "inferential statistics"
+      ],
+      "category": "mathematics",
+      "subcategory": "statistics"
+    },
+    "docker": {
+      "onet_code": "2.B.3.e",
+      "canonical_name": "docker",
+      "display_name": "Docker & Containerisation",
+      "aliases": [
+        "containerisation", "containerization", "containers",
+        "docker compose", "dockerfile", "container orchestration"
+      ],
+      "category": "devops",
+      "subcategory": "containerisation"
+    },
+    "linux_basics": {
+      "onet_code": "2.B.3.c",
+      "canonical_name": "linux_basics",
+      "display_name": "Linux Basics",
+      "aliases": [
+        "linux", "unix", "bash", "shell scripting",
+        "command line", "terminal", "linux administration",
+        "shell", "bash scripting", "cli"
+      ],
+      "category": "systems",
+      "subcategory": "operating_systems"
+    },
+    "git": {
+      "onet_code": "2.B.3.f",
+      "canonical_name": "git",
+      "display_name": "Git & Version Control",
+      "aliases": [
+        "version control", "git", "github", "gitlab",
+        "source control", "bitbucket", "git workflows"
+      ],
+      "category": "devops",
+      "subcategory": "version_control"
+    },
+    "system_design": {
+      "onet_code": "2.C.3.a",
+      "canonical_name": "system_design",
+      "display_name": "System Design",
+      "aliases": [
+        "software architecture", "system architecture",
+        "distributed systems", "scalability", "microservices",
+        "api design", "backend architecture"
+      ],
+      "category": "software_engineering",
+      "subcategory": "architecture"
+    },
+    "microsoft_excel": {
+      "onet_code": "2.B.3.g",
+      "canonical_name": "microsoft_excel",
+      "display_name": "Microsoft Excel",
+      "aliases": [
+        "excel", "ms excel", "spreadsheets", "pivot tables",
+        "vlookup", "excel formulas", "microsoft office"
+      ],
+      "category": "productivity",
+      "subcategory": "spreadsheets"
+    },
+    "communication": {
+      "onet_code": "2.A.1.e",
+      "canonical_name": "communication",
+      "display_name": "Professional Communication",
+      "aliases": [
+        "written communication", "verbal communication",
+        "presentation skills", "public speaking",
+        "business communication", "interpersonal skills"
+      ],
+      "category": "soft_skills",
+      "subcategory": "communication"
+    },
+    "project_management": {
+      "onet_code": "2.C.1.e",
+      "canonical_name": "project_management",
+      "display_name": "Project Management",
+      "aliases": [
+        "agile", "scrum", "kanban", "jira", "project planning",
+        "sprint planning", "product management", "pm"
+      ],
+      "category": "management",
+      "subcategory": "project_management"
+    },
+    "cloud_computing": {
+      "onet_code": "2.B.3.h",
+      "canonical_name": "cloud_computing",
+      "display_name": "Cloud Computing",
+      "aliases": [
+        "aws", "azure", "gcp", "google cloud", "amazon web services",
+        "cloud services", "cloud infrastructure", "cloud platforms",
+        "s3", "ec2", "lambda"
+      ],
+      "category": "infrastructure",
+      "subcategory": "cloud"
+    },
+    "api_development": {
+      "onet_code": "2.B.3.i",
+      "canonical_name": "api_development",
+      "display_name": "API Development",
+      "aliases": [
+        "rest api", "restful api", "api design", "fastapi",
+        "flask", "django", "web services", "json api",
+        "graphql", "api integration"
+      ],
+      "category": "software_engineering",
+      "subcategory": "backend"
+    }
+  }
+}
