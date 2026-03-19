@@ -1,0 +1,369 @@
+{
+  "python": {
+    "id": "SKL_001",
+    "display_name": "Python Programming",
+    "domain": "tech",
+    "level": "beginner",
+    "duration_hours": 20,
+    "importance_weight": 0.95,
+    "prerequisites": [],
+    "resources": [
+      {
+        "title": "Python Official Documentation",
+        "url": "https://docs.python.org/3/"
+      },
+      {
+        "title": "Automate the Boring Stuff with Python",
+        "url": "https://automatetheboringstuff.com"
+      }
+    ],
+    "onet_code": "2.B.3.b",
+    "description": "Core Python programming including data structures, functions, and OOP"
+  },
+  "statistics": {
+    "id": "SKL_002",
+    "display_name": "Statistics & Probability",
+    "domain": "tech",
+    "level": "beginner",
+    "duration_hours": 15,
+    "importance_weight": 0.85,
+    "prerequisites": [],
+    "resources": [
+      {
+        "title": "Khan Academy Statistics",
+        "url": "https://www.khanacademy.org/math/statistics-probability"
+      }
+    ],
+    "onet_code": "2.C.4.e",
+    "description": "Descriptive and inferential statistics, probability distributions"
+  },
+  "sql": {
+    "id": "SKL_003",
+    "display_name": "SQL & Databases",
+    "domain": "tech",
+    "level": "beginner",
+    "duration_hours": 12,
+    "importance_weight": 0.88,
+    "prerequisites": [],
+    "resources": [
+      {
+        "title": "SQLZoo",
+        "url": "https://sqlzoo.net"
+      },
+      {
+        "title": "Mode SQL Tutorial",
+        "url": "https://mode.com/sql-tutorial"
+      }
+    ],
+    "onet_code": "2.B.3.d",
+    "description": "SQL queries, joins, aggregations, database design basics"
+  },
+  "data_analysis": {
+    "id": "SKL_004",
+    "display_name": "Data Analysis",
+    "domain": "tech",
+    "level": "intermediate",
+    "duration_hours": 25,
+    "importance_weight": 0.90,
+    "prerequisites": ["python", "statistics"],
+    "resources": [
+      {
+        "title": "Pandas Documentation",
+        "url": "https://pandas.pydata.org/docs/"
+      },
+      {
+        "title": "Kaggle Data Analysis Course",
+        "url": "https://www.kaggle.com/learn/pandas"
+      }
+    ],
+    "onet_code": "2.C.7.a",
+    "description": "Data wrangling, cleaning, and analysis using Pandas and NumPy"
+  },
+  "machine_learning": {
+    "id": "SKL_005",
+    "display_name": "Machine Learning Fundamentals",
+    "domain": "tech",
+    "level": "intermediate",
+    "duration_hours": 40,
+    "importance_weight": 0.90,
+    "prerequisites": ["python", "statistics", "data_analysis"],
+    "resources": [
+      {
+        "title": "Scikit-learn Documentation",
+        "url": "https://scikit-learn.org/stable/"
+      },
+      {
+        "title": "Kaggle ML Course",
+        "url": "https://www.kaggle.com/learn/intro-to-machine-learning"
+      }
+    ],
+    "onet_code": "2.C.7.e",
+    "description": "Supervised and unsupervised learning, model evaluation, feature engineering"
+  },
+  "deep_learning": {
+    "id": "SKL_006",
+    "display_name": "Deep Learning",
+    "domain": "tech",
+    "level": "advanced",
+    "duration_hours": 50,
+    "importance_weight": 0.80,
+    "prerequisites": ["machine_learning", "python", "statistics"],
+    "resources": [
+      {
+        "title": "Fast.ai",
+        "url": "https://www.fast.ai"
+      },
+      {
+        "title": "Deep Learning Specialization",
+        "url": "https://www.deeplearning.ai"
+      }
+    ],
+    "onet_code": "2.C.7.f",
+    "description": "Neural networks, CNNs, RNNs, transformers"
+  },
+  "data_visualization": {
+    "id": "SKL_007",
+    "display_name": "Data Visualization",
+    "domain": "tech",
+    "level": "intermediate",
+    "duration_hours": 10,
+    "importance_weight": 0.75,
+    "prerequisites": ["python", "data_analysis"],
+    "resources": [
+      {
+        "title": "Matplotlib Documentation",
+        "url": "https://matplotlib.org/stable/tutorials/"
+      },
+      {
+        "title": "Seaborn Tutorial",
+        "url": "https://seaborn.pydata.org/tutorial.html"
+      }
+    ],
+    "onet_code": "2.C.7.b",
+    "description": "Creating charts, graphs, and dashboards using Matplotlib, Seaborn, Plotly"
+  },
+  "linux_basics": {
+    "id": "SKL_008",
+    "display_name": "Linux Basics",
+    "domain": "tech",
+    "level": "beginner",
+    "duration_hours": 8,
+    "importance_weight": 0.70,
+    "prerequisites": [],
+    "resources": [
+      {
+        "title": "Linux Journey",
+        "url": "https://linuxjourney.com"
+      }
+    ],
+    "onet_code": "2.B.3.c",
+    "description": "Command line, file system, permissions, basic shell scripting"
+  },
+  "docker": {
+    "id": "SKL_009",
+    "display_name": "Docker & Containerisation",
+    "domain": "tech",
+    "level": "intermediate",
+    "duration_hours": 12,
+    "importance_weight": 0.78,
+    "prerequisites": ["linux_basics"],
+    "resources": [
+      {
+        "title": "Docker Official Docs",
+        "url": "https://docs.docker.com/get-started/"
+      }
+    ],
+    "onet_code": "2.B.3.e",
+    "description": "Containers, images, Docker Compose, deployment basics"
+  },
+  "system_design": {
+    "id": "SKL_010",
+    "display_name": "System Design",
+    "domain": "tech",
+    "level": "advanced",
+    "duration_hours": 30,
+    "importance_weight": 0.85,
+    "prerequisites": ["sql", "linux_basics"],
+    "resources": [
+      {
+        "title": "System Design Primer",
+        "url": "https://github.com/donnemartin/system-design-primer"
+      }
+    ],
+    "onet_code": "2.C.3.a",
+    "description": "Scalable architecture, load balancing, caching, databases at scale"
+  },
+  "git": {
+    "id": "SKL_011",
+    "display_name": "Git & Version Control",
+    "domain": "tech",
+    "level": "beginner",
+    "duration_hours": 6,
+    "importance_weight": 0.80,
+    "prerequisites": [],
+    "resources": [
+      {
+        "title": "Pro Git Book",
+        "url": "https://git-scm.com/book/en/v2"
+      }
+    ],
+    "onet_code": "2.B.3.f",
+    "description": "Version control, branching, merging, pull requests, collaboration"
+  },
+  "communication": {
+    "id": "SKL_012",
+    "display_name": "Professional Communication",
+    "domain": "tech",
+    "level": "beginner",
+    "duration_hours": 8,
+    "importance_weight": 0.72,
+    "prerequisites": [],
+    "resources": [
+      {
+        "title": "Coursera Business Communication",
+        "url": "https://www.coursera.org/learn/wharton-communication-skills"
+      }
+    ],
+    "onet_code": "2.A.1.e",
+    "description": "Written and verbal communication, presentation skills, teamwork"
+  },
+  "warehouse_safety": {
+    "id": "SKL_013",
+    "display_name": "Warehouse Safety",
+    "domain": "ops",
+    "level": "beginner",
+    "duration_hours": 4,
+    "importance_weight": 0.95,
+    "prerequisites": [],
+    "certifications": ["OSHA_10"],
+    "resources": [
+      {
+        "title": "OSHA Warehouse Safety",
+        "url": "https://www.osha.gov/warehousing"
+      }
+    ],
+    "onet_code": "2.B.1.a",
+    "description": "Workplace hazard identification, PPE usage, emergency procedures"
+  },
+  "pallet_handling": {
+    "id": "SKL_014",
+    "display_name": "Pallet Handling",
+    "domain": "ops",
+    "level": "beginner",
+    "duration_hours": 4,
+    "importance_weight": 0.85,
+    "prerequisites": ["warehouse_safety"],
+    "resources": [
+      {
+        "title": "Safe Pallet Handling Guide",
+        "url": "https://www.osha.gov/sites/default/files/publications/osha3tip.pdf"
+      }
+    ],
+    "onet_code": "2.B.1.b",
+    "description": "Safe loading, unloading, stacking, and transporting pallets"
+  },
+  "forklift_operation": {
+    "id": "SKL_015",
+    "display_name": "Forklift Operation",
+    "domain": "ops",
+    "level": "intermediate",
+    "duration_hours": 8,
+    "importance_weight": 0.90,
+    "prerequisites": ["warehouse_safety", "pallet_handling"],
+    "certifications": ["OSHA_forklift"],
+    "resources": [
+      {
+        "title": "OSHA Powered Industrial Trucks",
+        "url": "https://www.osha.gov/powered-industrial-trucks"
+      }
+    ],
+    "onet_code": "2.B.1.c",
+    "description": "Safe operation of forklifts, load capacity, inspection procedures"
+  },
+  "inventory_management": {
+    "id": "SKL_016",
+    "display_name": "Inventory Management",
+    "domain": "ops",
+    "level": "intermediate",
+    "duration_hours": 10,
+    "importance_weight": 0.85,
+    "prerequisites": ["warehouse_safety"],
+    "resources": [
+      {
+        "title": "APICS Supply Chain Basics",
+        "url": "https://www.ascm.org/learning-development/"
+      }
+    ],
+    "onet_code": "2.B.2.a",
+    "description": "Stock control, cycle counting, inventory systems, shrinkage prevention"
+  },
+  "quality_control": {
+    "id": "SKL_017",
+    "display_name": "Quality Control",
+    "domain": "ops",
+    "level": "intermediate",
+    "duration_hours": 12,
+    "importance_weight": 0.88,
+    "prerequisites": ["warehouse_safety"],
+    "resources": [
+      {
+        "title": "ASQ Quality Basics",
+        "url": "https://asq.org/quality-resources/learn-about-quality"
+      }
+    ],
+    "onet_code": "2.B.2.b",
+    "description": "Inspection procedures, defect identification, quality standards"
+  },
+  "first_aid": {
+    "id": "SKL_018",
+    "display_name": "First Aid & Emergency Response",
+    "domain": "ops",
+    "level": "beginner",
+    "duration_hours": 6,
+    "importance_weight": 0.80,
+    "prerequisites": [],
+    "certifications": ["First_Aid_CPR"],
+    "resources": [
+      {
+        "title": "Red Cross First Aid",
+        "url": "https://www.redcross.org/take-a-class/first-aid"
+      }
+    ],
+    "onet_code": "2.B.1.d",
+    "description": "Basic first aid, CPR, emergency response procedures"
+  },
+  "team_leadership": {
+    "id": "SKL_019",
+    "display_name": "Team Leadership",
+    "domain": "ops",
+    "level": "advanced",
+    "duration_hours": 16,
+    "importance_weight": 0.82,
+    "prerequisites": ["communication"],
+    "resources": [
+      {
+        "title": "Coursera Leadership Skills",
+        "url": "https://www.coursera.org/learn/everyday-leadership-new"
+      }
+    ],
+    "onet_code": "2.A.1.b",
+    "description": "Team management, delegation, conflict resolution, motivation"
+  },
+  "microsoft_excel": {
+    "id": "SKL_020",
+    "display_name": "Microsoft Excel",
+    "domain": "tech",
+    "level": "beginner",
+    "duration_hours": 8,
+    "importance_weight": 0.75,
+    "prerequisites": [],
+    "resources": [
+      {
+        "title": "Microsoft Excel Training",
+        "url": "https://support.microsoft.com/en-us/excel"
+      }
+    ],
+    "onet_code": "2.B.3.g",
+    "description": "Spreadsheets, formulas, pivot tables, data analysis in Excel"
+  }
+}
