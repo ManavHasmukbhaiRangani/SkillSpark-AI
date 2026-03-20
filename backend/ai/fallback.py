@@ -17,13 +17,13 @@ All logic is deterministic — pure Python rules.
 No LLM involved whatsoever.
 """
 
-from core.dependencies import (
+from backend.core.dependencies import (
     get_all_prerequisites,
     get_unlocked_skills,
     SKILL_DEPENDENCIES,
 )
-from core.gap import GapResult, get_gap_summary
-from utils.catalog import load_catalog
+from backend.core.gap import GapResult, get_gap_summary
+from backend.utils.catalog import load_catalog
 
 
 # ── Rule-based trace builder ──────────────────────────────────────

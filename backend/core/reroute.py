@@ -18,14 +18,14 @@ PathState is the single source of truth for pathway.
 from dataclasses import dataclass, field
 from typing import Optional
 
-from core.dependencies import (
+from backend.core.dependencies import (
     enforce_order,
     get_prerequisites,
     get_all_prerequisites,
     get_unlocked_skills,
     SKILL_DEPENDENCIES,
 )
-from core.gap import calculate_hours_saved, calculate_total_hours
+from backend.core.gap import calculate_hours_saved, calculate_total_hours
 
 
 # ── SkillStatus ───────────────────────────────────────────────────

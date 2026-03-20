@@ -19,28 +19,28 @@ This route is THIN — all logic in core/ and nlp/.
 from fastapi import APIRouter, HTTPException
 from fastapi.responses import JSONResponse
 
-from api.schemas import AnalyseRequest, AnalyseResponse
-from core.confidence import batch_score_confidence
-from core.domain import classify_domain, get_domain_label
-from core.gap import (
+from backend.api.schemas import AnalyseRequest, AnalyseResponse
+from backend.core.confidence import batch_score_confidence
+from backend.core.domain import classify_domain, get_domain_label
+from backend.core.gap import (
     analyse_gaps,
     get_strong_skills,
     get_gap_summary,
     SkillScore,
 )
-from core.dependencies import (
+from backend.core.dependencies import (
     get_all_prerequisites,
     get_unlocked_skills,
 )
-from nlp.extractor import get_extractor
-from nlp.normaliser import get_normaliser
-from utils.catalog import (
+from backend.nlp.extractor import get_extractor
+from backend.nlp.normaliser import get_normaliser
+from backend.utils.catalog import (
     load_catalog,
     get_skill_importance,
     skill_exists,
     get_all_skill_ids,
 )
-from utils.logger import get_logger
+from backend.utils.logger import get_logger
 
 logger = get_logger(__name__)
 router = APIRouter()

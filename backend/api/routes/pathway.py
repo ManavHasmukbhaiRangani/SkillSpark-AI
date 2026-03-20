@@ -19,27 +19,27 @@ This route is THIN — logic in core/ and ai/.
 from fastapi import APIRouter, HTTPException
 from fastapi.responses import JSONResponse
 
-from api.schemas import PathwayRequest
-from core.confidence import batch_score_confidence
-from core.dependencies import enforce_order
-from core.domain import classify_domain, get_domain_label
-from core.gap import (
+from backend.api.schemas import PathwayRequest
+from backend.core.confidence import batch_score_confidence
+from backend.core.dependencies import enforce_order
+from backend.core.domain import classify_domain, get_domain_label
+from backend.core.gap import (
     analyse_gaps,
     get_gap_summary,
     get_strong_skills,
     calculate_total_hours,
     SkillScore,
 )
-from core.reroute import create_path_state
-from nlp.extractor import get_extractor
-from nlp.normaliser import get_normaliser
-from ai.generator import generate_pathway
-from utils.catalog import (
+from backend.core.reroute import create_path_state
+from backend.nlp.extractor import get_extractor
+from backend.nlp.normaliser import get_normaliser
+from backend.ai.generator import generate_pathway
+from backend.utils.catalog import (
     load_catalog,
     get_skill_importance,
     get_all_skill_ids,
 )
-from utils.logger import get_logger
+from backend.utils.logger import get_logger
 
 logger = get_logger(__name__)
 router = APIRouter()
