@@ -12,9 +12,9 @@ This route is THIN — all logic in nlp/parser.py.
 from fastapi import APIRouter, UploadFile, File, HTTPException
 from fastapi.responses import JSONResponse
 
-from backend.api.schemas import UploadResponse, ErrorResponse
-from backend.nlp.parser import parse_file, validate_file
-from backend.utils.logger import get_logger
+from api.schemas import UploadResponse, ErrorResponse
+from nlp.parser import parse_file, validate_file
+from utils.logger import get_logger
 
 logger = get_logger(__name__)
 router = APIRouter()

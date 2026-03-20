@@ -351,7 +351,7 @@ class SkillNormaliser:
             list of NormalisedSkill for JD requirements
         """
         # Import here to avoid circular imports
-        from backend.nlp.extractor import get_extractor
+        from nlp.extractor import get_extractor
 
         extractor = get_extractor()
 

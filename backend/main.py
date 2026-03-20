@@ -25,15 +25,15 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
 
-from backend.ai.claude_client import check_claude_health
-from backend.api.routes.upload import router as upload_router
-from backend.api.routes.analyse import router as analyse_router
-from backend.api.routes.pathway import router as pathway_router
-from backend.api.routes.reroute import router as reroute_router
-from backend.nlp.extractor import get_extractor
-from backend.nlp.normaliser import get_normaliser
-from backend.utils.catalog import load_catalog
-from backend.utils.logger import get_logger
+from ai.claude_client import check_claude_health
+from api.routes.upload import router as upload_router
+from api.routes.analyse import router as analyse_router
+from api.routes.pathway import router as pathway_router
+from api.routes.reroute import router as reroute_router
+from nlp.extractor import get_extractor
+from nlp.normaliser import get_normaliser
+from utils.catalog import load_catalog
+from utils.logger import get_logger
 
 # Load environment variables
 load_dotenv()
