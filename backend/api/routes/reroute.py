@@ -17,10 +17,10 @@ This route is THIN — all logic in core/reroute.py.
 from fastapi import APIRouter, HTTPException
 from fastapi.responses import JSONResponse
 
-from backend.api.schemas import RerouteRequest
-from backend.core.reroute import PathState
-from backend.utils.catalog import load_catalog
-from backend.utils.logger import get_logger
+from api.schemas import RerouteRequest
+from core.reroute import PathState
+from utils.catalog import load_catalog
+from utils.logger import get_logger
 
 logger = get_logger(__name__)
 router = APIRouter()

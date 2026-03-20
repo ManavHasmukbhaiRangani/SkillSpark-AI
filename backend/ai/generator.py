@@ -19,13 +19,13 @@ in core/ before this file is called.
 import json
 from typing import Optional
 
-from backend.ai.claude_client import (
+from ai.claude_client import (
     call_claude_json,
     ClaudeAPIError,
     ClaudeParseError,
     ClaudeRateLimitError,
 )
-from backend.ai.prompts import (
+from ai.prompts import (
     GAP_ANALYSIS_SYSTEM,   # ← add this
     PATHWAY_SYSTEM,        # ← add this
     build_gap_analysis_prompt,
@@ -33,13 +33,13 @@ from backend.ai.prompts import (
     build_fallback_trace,
     build_fallback_summary,
 )
-from backend.ai.fallback import rule_based_pathway
-from backend.core.dependencies import (
+from ai.fallback import rule_based_pathway
+from core.dependencies import (
     get_all_prerequisites,
     get_unlocked_skills,
 )
-from backend.core.gap import GapResult, get_gap_summary
-from backend.utils.catalog import load_catalog
+from core.gap import GapResult, get_gap_summary
+from utils.catalog import load_catalog
 
 
 # ── PathwayModule ─────────────────────────────────────────────────
