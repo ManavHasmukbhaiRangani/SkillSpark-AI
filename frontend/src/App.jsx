@@ -1,11 +1,43 @@
-function App() {
-  return (
-    <div className="min-h-screen bg-blue-500 flex items-center justify-center">
-      <h1 className="text-white text-4xl font-bold">
-        SkillPathForge AI
-      </h1>
-    </div>
-  )
-}
+/**
+ * SkillPathForge AI — App Root
+ * Sets up routing and shares pathway state
+ * across Upload and Dashboard pages.
+ */
 
-export default App
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import { usePathway } from "./hooks/usePathway";
+import Upload from "./pages/Upload";
+import Dashboard from "./pages/Dashboard";
+
+const App = () => {
+  // Single shared state — passed to both pages
+  const pathwayHook = usePathway();
+
+  return (
+    <BrowserRouter>
+      <Routes>
+
+        {/* Upload page — step 1 */}
+        <Route
+          path="/"
+          element={<Upload pathwayHook={pathwayHook} />}
+        />
+
+        {/* Dashboard — results */}
+        <Route
+          path="/dashboard"
+          element={<Dashboard pathwayHook={pathwayHook} />}
+        />
+
+        {/* Catch all — redirect to home */}
+        <Route
+          path="*"
+          element={<Navigate to="/" replace />}
+        />
+
+      </Routes>
+    </BrowserRouter>
+  );
+};
+
+export default App;
