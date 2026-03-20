@@ -1,167 +1,225 @@
 """
-SkillPathForge AI — Claude API Client
----------------------------------------
-Anthropic SDK setup and API call wrapper.
+SkillPathForge AI — LLM Client
+---------------------------------
+Supports both Claude (Anthropic) and Gemini (Google).
+Automatically detects which key is available and uses it.
 
-Responsibilities:
-  - Load API key from environment
-  - Initialise Anthropic client
-  - Make structured API calls
-  - Handle rate limits and timeouts
-  - Parse and validate responses
+Priority:
+  1. Claude API  (if CLAUDE_API_KEY is set and valid)
+  2. Gemini API  (if GEMINI_API_KEY is set and valid)
+  3. Fallback    (if neither key works)
 
-Claude is called ONLY from this file.
-All other files import from here.
+To switch:
+  Set CLAUDE_API_KEY in .env  → uses Claude
+  Set GEMINI_API_KEY in .env  → uses Gemini
+  Set neither / dummy key     → uses fallback
 """
 
 import json
 import os
 from typing import Optional
 
-import anthropic
 from dotenv import load_dotenv
 
-# Load environment variables
 load_dotenv()
 
 
 # ── Config ────────────────────────────────────────────────────────
 
-MODEL_NAME:    str = "claude-sonnet-4-6"
+CLAUDE_MODEL:  str = "claude-sonnet-4-6"
+GEMINI_MODEL:  str = "gemini-1.5-flash"
 MAX_TOKENS:    int = 2048
-TEMPERATURE:   float = 0.1    # low = consistent, predictable output
-TIMEOUT:       int = 30       # seconds
+TEMPERATURE:   float = 0.1
 
 
 # ── Exceptions ────────────────────────────────────────────────────
 
 class ClaudeAPIError(Exception):
-    """Raised when Claude API call fails."""
+    """Raised when LLM API call fails."""
     pass
-
 
 class ClaudeParseError(Exception):
-    """Raised when Claude response cannot be parsed."""
+    """Raised when response cannot be parsed."""
     pass
-
 
 class ClaudeRateLimitError(Exception):
     """Raised when API rate limit is hit."""
     pass
 
 
-# ── Client setup ──────────────────────────────────────────────────
+# ── Detect available provider ─────────────────────────────────────
 
-def _get_client() -> anthropic.Anthropic:
+def _get_provider() -> str:
     """
-    Creates and returns Anthropic client.
-
-    Reads API key from environment variable.
+    Detects which LLM provider to use based on
+    environment variables.
 
     Returns:
-        Anthropic client instance
-
-    Raises:
-        ClaudeAPIError: if API key not found
+        "claude"   → valid Claude key found
+        "gemini"   → valid Gemini key found
+        "fallback" → no valid key found
     """
+    claude_key = os.getenv("CLAUDE_API_KEY", "")
+    gemini_key = os.getenv("GEMINI_API_KEY", "")
+
+    # Check Claude key is real (not dummy)
+    if (
+        claude_key and
+        claude_key != "your_claude_api_key_here" and
+        claude_key != "dummy_key_for_testing" and
+        claude_key.startswith("sk-ant-")
+    ):
+        return "claude"
+
+    # Check Gemini key is real
+    if (
+        gemini_key and
+        gemini_key != "your_gemini_api_key_here" and
+        len(gemini_key) > 10
+    ):
+        return "gemini"
+
+    return "fallback"
+
+
+# ── Claude caller ─────────────────────────────────────────────────
+
+def _call_claude(
+    system_prompt: str,
+    user_message:  str,
+    max_tokens:    int = MAX_TOKENS,
+) -> str:
+    """
+    Calls Claude API (Anthropic).
+
+    Args:
+        system_prompt: system instructions
+        user_message:  user message
+        max_tokens:    max response tokens
+
+    Returns:
+        raw text response
+    """
+    import anthropic
+
     api_key = os.getenv("CLAUDE_API_KEY")
+    client  = anthropic.Anthropic(api_key=api_key)
 
-    if not api_key:
-        raise ClaudeAPIError(
-            "CLAUDE_API_KEY not found in environment. "
-            "Check your .env file."
-        )
+    response = client.messages.create(
+        model=CLAUDE_MODEL,
+        max_tokens=max_tokens,
+        temperature=TEMPERATURE,
+        system=system_prompt,
+        messages=[
+            {
+                "role":    "user",
+                "content": user_message,
+            }
+        ],
+    )
 
-    return anthropic.Anthropic(api_key=api_key)
+    return response.content[0].text
+
+
+# ── Gemini caller ─────────────────────────────────────────────────
+
+def _call_gemini(
+    system_prompt: str,
+    user_message:  str,
+) -> str:
+    """
+    Calls Gemini API (Google).
+    Free tier — no credit card needed.
+
+    Get free key at:
+    https://aistudio.google.com/apikey
+
+    Args:
+        system_prompt: system instructions
+        user_message:  user message
+
+    Returns:
+        raw text response
+    """
+    import google.generativeai as genai
+
+    api_key = os.getenv("GEMINI_API_KEY")
+    genai.configure(api_key=api_key)
+
+    model = genai.GenerativeModel(
+        model_name=GEMINI_MODEL,
+        system_instruction=system_prompt,
+    )
+
+    response = model.generate_content(user_message)
+    return response.text
 
 
 # ── Main call function ────────────────────────────────────────────
 
 def call_claude(
-    system_prompt:  str,
-    user_message:   str,
-    max_tokens:     int = MAX_TOKENS,
-    temperature:    float = TEMPERATURE,
+    system_prompt: str,
+    user_message:  str,
+    max_tokens:    int = MAX_TOKENS,
 ) -> str:
     """
-    Makes a single Claude API call.
+    Main LLM caller — auto-selects provider.
+
+    Tries Claude first, then Gemini, then raises
+    error so generator.py can use fallback.
 
     Args:
-        system_prompt: system instructions for Claude
-        user_message:  user message content
-        max_tokens:    maximum response tokens
-        temperature:   response randomness (0.0-1.0)
+        system_prompt: system instructions
+        user_message:  user message
+        max_tokens:    max tokens
 
     Returns:
-        raw response text string from Claude
+        raw text response string
 
     Raises:
-        ClaudeAPIError:       on API failures
-        ClaudeRateLimitError: on rate limit
+        ClaudeAPIError: if all providers fail
     """
-    try:
-        client = _get_client()
+    provider = _get_provider()
 
-        response = client.messages.create(
-            model=MODEL_NAME,
-            max_tokens=max_tokens,
-            temperature=temperature,
-            system=system_prompt,
-            messages=[
-                {
-                    "role":    "user",
-                    "content": user_message,
-                }
-            ],
-        )
+    if provider == "claude":
+        try:
+            return _call_claude(
+                system_prompt=system_prompt,
+                user_message=user_message,
+                max_tokens=max_tokens,
+            )
+        except Exception as e:
+            raise ClaudeAPIError(
+                f"Claude API failed: {str(e)}"
+            )
 
-        # Extract text from response
-        if not response.content:
-            raise ClaudeAPIError("Empty response from Claude")
+    elif provider == "gemini":
+        try:
+            return _call_gemini(
+                system_prompt=system_prompt,
+                user_message=user_message,
+            )
+        except Exception as e:
+            raise ClaudeAPIError(
+                f"Gemini API failed: {str(e)}"
+            )
 
-        raw_text = response.content[0].text
-
-        return raw_text
-
-    except anthropic.RateLimitError as e:
-        raise ClaudeRateLimitError(
-            f"Claude rate limit hit: {str(e)}"
-        )
-
-    except anthropic.APITimeoutError as e:
+    else:
+        # No valid key — trigger fallback in generator.py
         raise ClaudeAPIError(
-            f"Claude API timeout after {TIMEOUT}s: {str(e)}"
-        )
-
-    except anthropic.APIConnectionError as e:
-        raise ClaudeAPIError(
-            f"Claude API connection error: {str(e)}"
-        )
-
-    except anthropic.APIStatusError as e:
-        raise ClaudeAPIError(
-            f"Claude API error {e.status_code}: {str(e)}"
-        )
-
-    except Exception as e:
-        raise ClaudeAPIError(
-            f"Unexpected error calling Claude: {str(e)}"
+            "No valid API key found — using fallback"
         )
 
 
-# ── JSON response parser ──────────────────────────────────────────
+# ── JSON parser ───────────────────────────────────────────────────
 
 def parse_claude_json(raw_text: str) -> dict:
     """
-    Parses Claude response as JSON.
-
-    Claude sometimes wraps JSON in markdown code blocks.
-    This function handles both cases:
-      - Raw JSON
-      - JSON wrapped in ```json ... ```
+    Parses LLM response as JSON.
+    Handles markdown code blocks.
 
     Args:
-        raw_text: raw text response from Claude
+        raw_text: raw response text
 
     Returns:
         parsed dict
@@ -170,12 +228,11 @@ def parse_claude_json(raw_text: str) -> dict:
         ClaudeParseError: if JSON parsing fails
     """
     if not raw_text or not raw_text.strip():
-        raise ClaudeParseError("Empty response from Claude")
+        raise ClaudeParseError("Empty response from LLM")
 
-    # Clean up response text
     text = raw_text.strip()
 
-    # Remove markdown code blocks if present
+    # Remove markdown code blocks
     if text.startswith("```json"):
         text = text[7:]
     elif text.startswith("```"):
@@ -186,17 +243,16 @@ def parse_claude_json(raw_text: str) -> dict:
 
     text = text.strip()
 
-    # Parse JSON
     try:
         return json.loads(text)
     except json.JSONDecodeError as e:
         raise ClaudeParseError(
-            f"Failed to parse Claude response as JSON: {e}\n"
-            f"Raw response: {raw_text[:200]}..."
+            f"Failed to parse JSON: {e}\n"
+            f"Raw: {raw_text[:200]}"
         )
 
 
-# ── Call with JSON parsing ────────────────────────────────────────
+# ── Combined call + parse ─────────────────────────────────────────
 
 def call_claude_json(
     system_prompt: str,
@@ -204,30 +260,25 @@ def call_claude_json(
     max_tokens:    int = MAX_TOKENS,
 ) -> dict:
     """
-    Makes Claude API call and parses response as JSON.
-
-    Combines call_claude() and parse_claude_json()
-    into single convenience function.
+    Calls LLM and parses response as JSON.
 
     Args:
         system_prompt: system instructions
-        user_message:  user message content
-        max_tokens:    maximum response tokens
+        user_message:  user message
+        max_tokens:    max tokens
 
     Returns:
-        parsed dict from Claude response
+        parsed dict
 
     Raises:
         ClaudeAPIError:    on API failures
-        ClaudeParseError:  on JSON parse failures
-        ClaudeRateLimitError: on rate limit
+        ClaudeParseError:  on JSON failures
     """
     raw_text = call_claude(
         system_prompt=system_prompt,
         user_message=user_message,
         max_tokens=max_tokens,
     )
-
     return parse_claude_json(raw_text)
 
 
@@ -235,35 +286,44 @@ def call_claude_json(
 
 def check_claude_health() -> dict:
     """
-    Verifies Claude API is reachable and responding.
-    Called on FastAPI startup.
+    Checks which LLM provider is active.
 
     Returns:
-        dict with status and model info
+        dict with status and provider info
     """
+    provider = _get_provider()
+
+    if provider == "fallback":
+        return {
+            "status":   "fallback",
+            "model":    "rule-based",
+            "provider": "none",
+            "message":  (
+                "No API key found — "
+                "fallback mode active"
+            ),
+        }
+
     try:
         response = call_claude(
             system_prompt="You are a health check assistant.",
             user_message="Reply with exactly: OK",
             max_tokens=10,
         )
-
         return {
-            "status":  "healthy",
-            "model":   MODEL_NAME,
-            "message": response.strip(),
+            "status":   "healthy",
+            "model":    (
+                CLAUDE_MODEL if provider == "claude"
+                else GEMINI_MODEL
+            ),
+            "provider": provider,
+            "message":  response.strip(),
         }
 
-    except ClaudeRateLimitError:
+    except Exception as e:
         return {
-            "status":  "rate_limited",
-            "model":   MODEL_NAME,
-            "message": "Rate limit hit — will retry",
-        }
-
-    except ClaudeAPIError as e:
-        return {
-            "status":  "unhealthy",
-            "model":   MODEL_NAME,
-            "message": str(e),
+            "status":   "unhealthy",
+            "model":    "unknown",
+            "provider": provider,
+            "message":  str(e),
         }
