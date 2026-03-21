@@ -216,6 +216,25 @@ python eval_routing.py
 
 ---
 
+## UI Screenshots
+
+### 📤 Upload Page
+<img src="assets/uploadPage.png" width="700"/>
+
+### 📊 Overview Dashboard
+<img src="assets/overview.png" width="700"/>
+
+### 🧠 Learning Pathway Graph
+<img src="assets/pathwaygraph.png" width="700"/>
+
+### 📈 Progress Tracking
+<img src="assets/progress.png" width="700"/>
+
+### 🧾 Reasoning Trace (AI Explainability)
+<img src="assets/reasoningTrace.png" width="700"/>
+
+---
+
 ## Team
 **The JSONs**
 
