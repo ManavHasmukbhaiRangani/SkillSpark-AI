@@ -128,13 +128,15 @@ DEFAULT_SECTION_CONFIDENCE: float = 0.50
 
 
 # ── Signal weights ────────────────────────────────────────────────
-# How much each signal contributes to final score
-# Must sum to 1.0
+# Relative importance of each signal when ALL three are present.
+# Weights are normalised at runtime across whichever signals fired,
+# so the ratios are preserved regardless of how many are available.
+# Ratio: years : verb : section = 40 : 35 : 25
 
 SIGNAL_WEIGHTS: dict[str, float] = {
-    "years":   0.40,   # strongest signal
-    "verb":    0.35,   # second strongest
-    "section": 0.25,   # always available
+    "years":   0.40,
+    "verb":    0.35,
+    "section": 0.25,
 }
 
 
@@ -251,14 +253,15 @@ def score_confidence(
         confidence float between 0.10 and 0.95
 
     Formula:
-        if years found:
-            score = (years×0.40 + verb×0.35 + section×0.25)
-        elif verb found:
-            score = (verb×0.58 + section×0.42)
-        else:
-            score = section score only
+        Collect whichever signals fired (years, verb, section).
+        Normalise their raw weights so they sum to 1.0, then
+        take the weighted average. This means:
+          - all three present → years×0.40 + verb×0.35 + section×0.25
+          - years + verb only → years×0.533 + verb×0.467
+          - verb + section   → verb×0.583  + section×0.417
+          - section only     → section×1.0  (full weight, not 0.25)
 
-        + role modifier applied after weighted average
+        + role modifier applied additively after the weighted average.
 
     Examples:
         "Built ML pipelines for 3 years" → ~0.85
@@ -266,34 +269,32 @@ def score_confidence(
         "Led Python team (5 years)"      → ~0.93
         "Python" (in Skills section)     → ~0.50
     """
-    scores: list[float] = []
-    weights: list[float] = []
+    signals: dict[str, float] = {}
 
     # Signal 1 — Years
     year_score = _extract_years(context)
     if year_score is not None:
-        scores.append(year_score)
-        weights.append(SIGNAL_WEIGHTS["years"])
+        signals["years"] = year_score
 
     # Signal 2 — Verb
     verb_score = _extract_verb_score(context)
     if verb_score is not None:
-        scores.append(verb_score)
-        weights.append(SIGNAL_WEIGHTS["verb"])
+        signals["verb"] = verb_score
 
     # Signal 3 — Section (always available)
-    section_score = _get_section_score(section)
-    scores.append(section_score)
-    weights.append(SIGNAL_WEIGHTS["section"])
+    signals["section"] = _get_section_score(section)
 
-    # Weighted average of found signals
-    total_weight = sum(weights)
-    if total_weight == 0:
-        raw_score = DEFAULT_SECTION_CONFIDENCE
-    else:
-        raw_score = sum(
-            s * w for s, w in zip(scores, weights)
-        ) / total_weight
+    # Normalise weights across only the signals that fired so
+    # their ratios are preserved but they always sum to 1.0.
+    # Without normalisation a lone section signal would be
+    # multiplied by 0.25 and then divided by 0.25 — correct
+    # mathematically but the docstring formula was wrong and
+    # the intent is that section carries full weight alone.
+    raw_total = sum(SIGNAL_WEIGHTS[k] for k in signals)
+    raw_score = sum(
+        signals[k] * SIGNAL_WEIGHTS[k]
+        for k in signals
+    ) / raw_total
 
     # Signal 4 — Role modifier (additive)
     role_modifier = _extract_role_modifier(context)
