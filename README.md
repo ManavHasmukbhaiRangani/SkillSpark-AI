@@ -216,21 +216,8 @@ python eval_routing.py
 
 ---
 
-## Evaluation Criteria Coverage
-
-| Criterion | Weight | How we address it |
-|-----------|--------|-------------------|
-| Communication + docs | 20% | This README + 5-slide deck + demo video |
-| Technical sophistication | 20% | 3-stage NLP + confidence formula + DFS ordering |
-| Grounding + zero hallucination | 15% | Claude grounded to JSON catalog + Pydantic validation |
-| User experience | 15% | 5 UI panels + React Flow + skip + reroute |
-| Reasoning trace | 10% | Per-module: gap score + prereq chain + why needed |
-| Product impact | 10% | Hours saved counter + skip known skills |
-| Cross-domain scalability | 10% | Dual taxonomy (tech + ops) + Kaggle JD testing |
-
----
-
 ## Team
+**The JSONs**
 
 Built for ARTPARK CodeForge Hackathon 2026
 
