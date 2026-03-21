@@ -96,7 +96,7 @@ const HoursSaved = ({
         <div className="mt-4 p-3 bg-green-50 rounded-xl
                         border border-green-100 text-center">
           <p className="text-sm text-green-700 font-medium">
-            You saved {hoursSaved} hours by skipping
+            You saved {hoursSaved} hours by skipping{" "}
             {skippedCount} skill{skippedCount !== 1 ? "s" : ""} you already know
           </p>
         </div>
