@@ -1,4 +1,10 @@
 # SkillSpark AI
+![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)
+![Python](https://img.shields.io/badge/Python-3.10+-blue)
+![React](https://img.shields.io/badge/Frontend-React-blue)
+![FastAPI](https://img.shields.io/badge/Backend-FastAPI-green)
+![Hackathon](https://img.shields.io/badge/Hackathon-ARTPARK%202026-orange)
+![Status](https://img.shields.io/badge/Status-Active-success)
 
 > AI-powered adaptive onboarding engine that diagnoses skill gaps and generates personalised, dependency-aware learning pathways for job readiness.
 
