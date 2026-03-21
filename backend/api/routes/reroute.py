@@ -68,11 +68,13 @@ async def reroute(
         # Full path = current + already skipped + completed
         full_path = list(request.current_path)
 
-        # Add back previously skipped/completed
-        # so PathState has complete picture
+        # Add back previously skipped skills at the end so
+        # enforce_order() can re-sort correctly. insert(0, ...) would
+        # reverse their original order and potentially re-inject them
+        # into the remaining path after re-ordering.
         for skill in request.skipped:
             if skill not in full_path:
-                full_path.insert(0, skill)
+                full_path.append(skill)
 
         path_state = PathState(
             full_path=full_path,
@@ -147,10 +149,10 @@ async def complete_skill(
         full_path = list(request.current_path)
         for skill in request.skipped:
             if skill not in full_path:
-                full_path.insert(0, skill)
+                full_path.append(skill)
         for skill in request.completed:
             if skill not in full_path:
-                full_path.insert(0, skill)
+                full_path.append(skill)
 
         path_state = PathState(
             full_path=full_path,
