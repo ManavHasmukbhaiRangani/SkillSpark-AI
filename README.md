@@ -1,4 +1,4 @@
-# SkillPathForge AI
+# SkillSpark AI
 
 > AI-powered adaptive onboarding engine that diagnoses skill gaps and generates personalised, dependency-aware learning pathways for job readiness.
 
@@ -8,7 +8,7 @@ Built for **ARTPARK CodeForge Hackathon 2025** — AI-Adaptive Onboarding Engine
 
 ## What it does
 
-SkillPathForge AI takes a candidate's resume and a job description, then:
+SkillSpark AI takes a candidate's resume and a job description, then:
 
 1. **Extracts** skills using spaCy NER with custom O*NET patterns
 2. **Normalises** skill names using Sentence Transformers (cosine similarity)
