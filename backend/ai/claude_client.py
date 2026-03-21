@@ -127,31 +127,20 @@ def _call_gemini(
     system_prompt: str,
     user_message:  str,
 ) -> str:
-    """
-    Calls Gemini API (Google).
-    Free tier — no credit card needed.
-
-    Get free key at:
-    https://aistudio.google.com/apikey
-
-    Args:
-        system_prompt: system instructions
-        user_message:  user message
-
-    Returns:
-        raw text response
-    """
-    import google.generativeai as genai
+    from google import genai
+    from google.genai import types
 
     api_key = os.getenv("GEMINI_API_KEY")
-    genai.configure(api_key=api_key)
+    client  = genai.Client(api_key=api_key)
 
-    model = genai.GenerativeModel(
-        model_name=GEMINI_MODEL,
-        system_instruction=system_prompt,
+    response = client.models.generate_content(
+        model=GEMINI_MODEL,
+        contents=user_message,
+        config=types.GenerateContentConfig(
+            system_instruction=system_prompt,
+            temperature=TEMPERATURE,
+        ),
     )
-
-    response = model.generate_content(user_message)
     return response.text
 
 
