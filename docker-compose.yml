@@ -1,0 +1,67 @@
+# ── SkillPathForge AI — Docker Compose ───────────────────────────
+# Runs backend (FastAPI) + frontend (Vite/React) together.
+#
+# Usage:
+#   docker-compose up --build        # first run
+#   docker-compose up                # subsequent runs
+#   docker-compose down              # stop everything
+#
+# Services:
+#   backend  → http://localhost:8000  (API + docs at /docs)
+#   frontend → http://localhost:3000  (React UI)
+
+version: "3.9"
+
+services:
+
+  # ── Backend — FastAPI ─────────────────────────────────────────
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: skillpathforge-backend
+    ports:
+      - "8000:8000"
+    volumes:
+      # Mount data directory so catalog + taxonomies are accessible
+      - ./data:/data
+      # Mount backend code for live reload in development
+      - ./backend:/app
+    environment:
+      # Copy your .env file or set keys directly here
+      - CLAUDE_API_KEY=${CLAUDE_API_KEY:-}
+      - GEMINI_API_KEY=${GEMINI_API_KEY:-}
+      - BACKEND_PORT=8000
+    env_file:
+      - .env
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 60s    # give spaCy + Sentence Transformer time to load
+    restart: unless-stopped
+    networks:
+      - skillpathforge
+
+  # ── Frontend — React + Vite ───────────────────────────────────
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: skillpathforge-frontend
+    ports:
+      - "3000:3000"
+    environment:
+      # Points React at the backend service
+      - VITE_API_URL=http://localhost:8000
+    depends_on:
+      backend:
+        condition: service_healthy
+    restart: unless-stopped
+    networks:
+      - skillpathforge
+
+networks:
+  skillpathforge:
+    driver: bridge
