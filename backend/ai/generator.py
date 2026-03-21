@@ -104,6 +104,10 @@ class PathwayModule:
             "what_it_unlocks": self.what_it_unlocks,
             "quick_win":       self.quick_win,
             "onet_code":       self.onet_code,
+            # Always ship status so the frontend TracePanel button
+            # guard (module.status === "pending") works reliably
+            # regardless of timing or render order.
+            "status":          "pending",
         }
 
 

@@ -233,8 +233,10 @@ const TraceItem = ({
             </div>
           </div>
 
-          {/* Action buttons */}
-          {module.status === "pending" && (
+          {/* Action buttons — shown for pending modules.
+              Treat undefined status as pending (safety net for
+              modules that bypassed syncModules stamping). */}
+          {(!module.status || module.status === "pending") && (
             <div className="flex gap-2">
               {onSkip && (
                 <button

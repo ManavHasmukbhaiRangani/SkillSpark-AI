@@ -170,6 +170,7 @@ def rule_based_pathway(
             "what_it_unlocks": trace["what_it_unlocks"],
             "quick_win":       trace["quick_win"],
             "onet_code":       entry.get("onet_code", ""),
+            "status":          "pending",
         })
 
     # Build summary

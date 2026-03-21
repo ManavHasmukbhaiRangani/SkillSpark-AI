@@ -22,13 +22,17 @@ export const useReroute = (initialModules = []) => {
 
   // ── Sync with new modules from parent ────────────────────────
   const syncModules = useCallback((newModules) => {
-    setModules(newModules);
-    setRemainingPath(newModules.map((m) => m.skill_id));
+    const stamped = newModules.map((m) => ({
+      ...m,
+      status: m.status || "pending",
+    }));
+    setModules(stamped);
+    setRemainingPath(stamped.map((m) => m.skill_id));
     setSkipped([]);
     setCompleted([]);
     setHoursSaved(0);
     setProgressPercent(0);
-    const total = newModules.reduce(
+    const total = stamped.reduce(
       (sum, m) => sum + (m.duration_hours || 0), 0
     );
     setHoursRemaining(total);
