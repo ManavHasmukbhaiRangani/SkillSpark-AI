@@ -92,7 +92,15 @@ export const usePathway = () => {
 
   // ── Step 3: Analyse gaps ──────────────────────────────────────
   const analyse = useCallback(async () => {
-    const { resumeText, jdText, jobTitle, domain } = state;
+    // Read current values via functional setState to avoid capturing
+    // a stale closure — state spread into the dependency array means
+    // any unrelated field change (e.g. loading) re-creates this
+    // callback with potentially out-of-date text values.
+    let resumeText, jdText, jobTitle, domain;
+    setState((prev) => {
+      ({ resumeText, jdText, jobTitle, domain } = prev);
+      return prev; // no change, just reading
+    });
 
     if (!resumeText || !jdText) {
       update({ error: "Please upload both resume and JD first" });
@@ -131,11 +139,17 @@ export const usePathway = () => {
       });
       throw err;
     }
-  }, [state, update]);
+  }, [update]);
 
   // ── Step 4: Generate pathway ──────────────────────────────────
   const generate = useCallback(async (knownSkills = []) => {
-    const { resumeText, jdText, jobTitle, domain } = state;
+    // Same pattern as analyse — read current state values without
+    // closing over the state object in the dependency array.
+    let resumeText, jdText, jobTitle, domain;
+    setState((prev) => {
+      ({ resumeText, jdText, jobTitle, domain } = prev);
+      return prev;
+    });
 
     update({ loading: true, error: null });
 
@@ -164,7 +178,7 @@ export const usePathway = () => {
       update({ loading: false, error: err.message });
       throw err;
     }
-  }, [state, update]);
+  }, [update]);
 
   // ── Set job title ─────────────────────────────────────────────
   const setJobTitle = useCallback((title) => {
