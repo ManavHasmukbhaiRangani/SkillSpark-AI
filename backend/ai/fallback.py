@@ -1,5 +1,5 @@
 """
-SkillPathForge AI — Rule-Based Fallback Engine
+SkillSpark AI — Rule-Based Fallback Engine
 ------------------------------------------------
 Generates complete pathway without Claude API.
 

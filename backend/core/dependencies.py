@@ -1,5 +1,5 @@
 """
-SkillPathForge AI — Skill Dependency Engine
+SkillSpark AI — Skill Dependency Engine
 --------------------------------------------
 Owns the prerequisite relationships between skills.
 This is YOUR original logic — no LLM involved.

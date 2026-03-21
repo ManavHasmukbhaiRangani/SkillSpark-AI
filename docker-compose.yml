@@ -1,4 +1,4 @@
-# ── SkillPathForge AI — Docker Compose ───────────────────────────
+# ── SkillSpark AI — Docker Compose ───────────────────────────
 # Runs backend (FastAPI) + frontend (Vite/React) together.
 #
 # Usage:

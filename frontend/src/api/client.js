@@ -1,5 +1,5 @@
 /**
- * SkillPathForge AI — API Client
+ * SkillSpark AI — API Client
  * Axios instance for all backend API calls.
  * All API calls go through this file only.
  */

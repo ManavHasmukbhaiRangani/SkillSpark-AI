@@ -1,5 +1,5 @@
 /**
- * SkillPathForge AI — Hours Saved Counter
+ * SkillSpark AI — Hours Saved Counter
  * Shows total hours saved by skipping known skills.
  * Directly proves product impact (10% rubric score).
  */

@@ -1,5 +1,5 @@
 """
-SkillPathForge AI — Pathway Generator
+SkillSpark AI — Pathway Generator
 ---------------------------------------
 Orchestrates the two Claude API calls and
 assembles the final pathway response.

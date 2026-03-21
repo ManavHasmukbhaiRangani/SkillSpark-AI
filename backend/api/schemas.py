@@ -1,5 +1,5 @@
 """
-SkillPathForge AI — API Schemas
+SkillSpark AI — API Schemas
 ---------------------------------
 Pydantic models for all API request and response types.
 

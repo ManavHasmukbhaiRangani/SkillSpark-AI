@@ -1,5 +1,5 @@
 """
-SkillPathForge AI — Skill Extractor
+SkillSpark AI — Skill Extractor
 --------------------------------------
 Extracts skill mentions from resume and JD text
 using spaCy NER with custom EntityRuler patterns.

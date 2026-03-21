@@ -1,5 +1,5 @@
 /**
- * SkillPathForge AI — Dashboard Page
+ * SkillSpark AI — Dashboard Page
  * Main results page showing gap analysis + pathway.
  * Combines all 5 UI components in one view.
  */
@@ -123,7 +123,7 @@ const Dashboard = ({ pathwayHook }) => {
               </div>
               <div>
                 <h1 className="text-lg font-bold text-gray-800">
-                  SkillPathForge AI
+                  SkillSpark AI
                 </h1>
                 <p className="text-xs text-gray-400">
                   {jobTitle} · {domainResult?.label || domain}

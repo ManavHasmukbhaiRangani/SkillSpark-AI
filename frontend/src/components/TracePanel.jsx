@@ -1,5 +1,5 @@
 /**
- * SkillPathForge AI — Reasoning Trace Panel
+ * SkillSpark AI — Reasoning Trace Panel
  * Shows why each module was recommended.
  * Directly earns the 10% reasoning trace rubric score.
  */

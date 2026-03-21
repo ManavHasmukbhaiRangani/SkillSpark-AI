@@ -1,5 +1,5 @@
 """
-SkillPathForge AI — Reroute Route
+SkillSpark AI — Reroute Route
 -----------------------------------
 POST /api/v1/reroute
 

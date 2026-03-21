@@ -1,5 +1,5 @@
 """
-SkillPathForge AI — Confidence Scoring Engine
+SkillSpark AI — Confidence Scoring Engine
 ----------------------------------------------
 Infers skill proficiency from resume context signals.
 No explicit skill levels needed from the resume.

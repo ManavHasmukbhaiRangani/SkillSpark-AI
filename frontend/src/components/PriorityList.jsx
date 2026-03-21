@@ -1,5 +1,5 @@
 /**
- * SkillPathForge AI — Priority List
+ * SkillSpark AI — Priority List
  * Shows skills ranked by priority score descending.
  * Makes the priority formula visible to judges.
  */

@@ -1,5 +1,5 @@
 /**
- * SkillPathForge AI — usePathway Hook
+ * SkillSpark AI — usePathway Hook
  * Manages the complete pathway generation state.
  * Handles upload → analyse → generate flow.
  */

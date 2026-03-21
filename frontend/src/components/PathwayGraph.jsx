@@ -1,5 +1,5 @@
 /**
- * SkillPathForge AI — Pathway Graph
+ * SkillSpark AI — Pathway Graph
  * Renders learning pathway as interactive node graph.
  * Uses React Flow for dependency-aware visualisation.
  */

@@ -1,5 +1,5 @@
 """
-SkillPathForge AI — Upload Route
+SkillSpark AI — Upload Route
 ----------------------------------
 POST /api/v1/upload
 

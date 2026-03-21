@@ -1,5 +1,5 @@
 """
-SkillPathForge AI — Domain Classifier
+SkillSpark AI — Domain Classifier
 --------------------------------------
 Classifies whether a resume or job description
 belongs to the TECH (desk) or OPS (operational)

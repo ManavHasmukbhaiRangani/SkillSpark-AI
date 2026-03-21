@@ -1,5 +1,5 @@
 """
-SkillPathForge AI — Pathway Route
+SkillSpark AI — Pathway Route
 -----------------------------------
 POST /api/v1/pathway
 

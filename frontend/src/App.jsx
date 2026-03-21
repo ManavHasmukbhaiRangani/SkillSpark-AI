@@ -1,5 +1,5 @@
 /**
- * SkillPathForge AI — App Root
+ * SkillSpark AI — App Root
  * Sets up routing and shares pathway state
  * across Upload and Dashboard pages.
  */

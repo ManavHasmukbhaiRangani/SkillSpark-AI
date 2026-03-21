@@ -1,5 +1,5 @@
 """
-SkillPathForge AI — File Parser
+SkillSpark AI — File Parser
 ---------------------------------
 Extracts raw text from uploaded resume files.
 

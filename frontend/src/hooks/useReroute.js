@@ -1,5 +1,5 @@
 /**
- * SkillPathForge AI — useReroute Hook
+ * SkillSpark AI — useReroute Hook
  * Manages skill skip and pathway recalculation state.
  * Called when user marks a skill as already known.
  */

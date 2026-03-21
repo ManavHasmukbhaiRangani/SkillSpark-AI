@@ -1,5 +1,5 @@
 """
-SkillPathForge AI — Gap Analysis Engine
+SkillSpark AI — Gap Analysis Engine
 ----------------------------------------
 Calculates skill gaps between candidate profile
 and job description requirements.

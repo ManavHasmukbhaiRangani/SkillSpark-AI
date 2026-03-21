@@ -1,5 +1,5 @@
 """
-SkillPathForge AI — Catalog Loader
+SkillSpark AI — Catalog Loader
 -------------------------------------
 Loads and provides access to the course catalog
 and skill taxonomies from JSON files.

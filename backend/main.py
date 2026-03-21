@@ -1,5 +1,5 @@
 """
-SkillPathForge AI — FastAPI Application Entry Point
+SkillSpark AI — FastAPI Application Entry Point
 ----------------------------------------------------
 Wires together all routers, middleware, and startup events.
 
@@ -58,7 +58,7 @@ async def lifespan(app: FastAPI):
       - Clean up resources
     """
     # ── STARTUP ──────────────────────────────────────────────────
-    logger.info("SkillPathForge AI starting up...")
+    logger.info("SkillSpark AI starting up...")
 
     # Load catalog (cached)
     try:
@@ -98,18 +98,18 @@ async def lifespan(app: FastAPI):
             f"fallback mode will be used: {e}"
         )
 
-    logger.info("SkillPathForge AI ready!")
+    logger.info("SkillSpark AI ready!")
 
     yield  # App runs here
 
     # ── SHUTDOWN ─────────────────────────────────────────────────
-    logger.info("SkillPathForge AI shutting down...")
+    logger.info("SkillSpark AI shutting down...")
 
 
 # ── App creation ──────────────────────────────────────────────────
 
 app = FastAPI(
-    title="SkillPathForge AI API",
+    title="SkillSpark AI API",
     description=(
         "AI-powered adaptive onboarding engine. "
         "Diagnoses skill gaps and generates personalised "
@@ -172,7 +172,7 @@ async def root() -> JSONResponse:
     """Welcome message and API info."""
     return JSONResponse(
         content={
-            "app":         "SkillPathForge AI",
+            "app":         "SkillSpark AI",
             "version":     "1.0.0",
             "status":      "running",
             "docs":        "/docs",
@@ -197,7 +197,7 @@ async def health() -> JSONResponse:
     """
     health_status = {
         "status":      "healthy",
-        "app_name":    "SkillPathForge AI",
+        "app_name":    "SkillSpark AI",
         "version":     "1.0.0",
         "claude":      "unknown",
         "catalog":     "unknown",

@@ -1,5 +1,5 @@
 """
-SkillPathForge AI — LLM Client
+SkillSpark AI — LLM Client
 ---------------------------------
 Supports both Claude (Anthropic) and Gemini (Google).
 Automatically detects which key is available and uses it.

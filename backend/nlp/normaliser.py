@@ -1,5 +1,5 @@
 """
-SkillPathForge AI — Skill Normaliser
+SkillSpark AI — Skill Normaliser
 --------------------------------------
 Maps raw extracted skill mentions to canonical
 O*NET skill names using Sentence Transformers.

@@ -1,5 +1,5 @@
 """
-SkillPathForge AI — Parser Validation Script
+SkillSpark AI — Parser Validation Script
 ---------------------------------------------
 Validates spaCy + Sentence Transformer extraction
 accuracy against Kaggle resume dataset.
@@ -248,7 +248,7 @@ def run_evaluation():
     """
     Runs parser evaluation on ground truth samples.
     """
-    print("SkillPathForge AI — Parser Validation")
+    print("SkillSpark AI — Parser Validation")
     print("=" * 50)
 
     # Load models

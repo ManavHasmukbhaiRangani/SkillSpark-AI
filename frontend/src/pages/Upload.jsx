@@ -1,5 +1,5 @@
 /**
- * SkillPathForge AI — Upload Page
+ * SkillSpark AI — Upload Page
  * Step 1: User uploads resume + JD and enters job title.
  */
 
@@ -140,7 +140,7 @@ const Upload = ({ pathwayHook }) => {
             <span className="text-white text-sm font-bold">S</span>
           </div>
           <h1 className="text-xl font-bold text-gray-800">
-            SkillPathForge AI
+            SkillSpark AI
           </h1>
           <span className="text-gray-400 text-sm ml-2">
             Adaptive Onboarding Engine

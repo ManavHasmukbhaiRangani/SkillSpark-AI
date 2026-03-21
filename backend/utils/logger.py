@@ -1,5 +1,5 @@
 """
-SkillPathForge AI — Logger
+SkillSpark AI — Logger
 ----------------------------
 Structured logging for the application.
 """

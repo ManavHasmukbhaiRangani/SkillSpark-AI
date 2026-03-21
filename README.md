@@ -1,4 +1,4 @@
-# SkillPathForge AI
+# SkillSpark AI
 
 > AI-powered adaptive onboarding engine that diagnoses skill gaps and generates personalised, dependency-aware learning pathways for job readiness.
 
@@ -8,7 +8,7 @@ Built for **ARTPARK CodeForge Hackathon 2025** — AI-Adaptive Onboarding Engine
 
 ## What it does
 
-SkillPathForge AI takes a candidate's resume and a job description, then:
+SkillSpark AI takes a candidate's resume and a job description, then:
 
 1. **Extracts** skills using spaCy NER with custom O*NET patterns
 2. **Normalises** skill names using Sentence Transformers (cosine similarity)
@@ -65,7 +65,7 @@ enforce_order(skill_dependencies_dict)
 
 ## Architecture
 ```
-SkillPathForge-AI/
+SkillSpark-AI/
 ├── backend/
 │   ├── core/           # Original logic (confidence, gap, dependencies, reroute)
 │   ├── nlp/            # spaCy + Sentence Transformers pipeline
@@ -108,8 +108,8 @@ SkillPathForge-AI/
 
 ### 1. Clone the repository
 ```bash
-git clone https://github.com/yourteam/SkillPathForge-AI.git
-cd SkillPathForge-AI
+git clone https://github.com/yourteam/SkillSpark-AI.git
+cd SkillSpark-AI
 ```
 
 ### 2. Backend setup

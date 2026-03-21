@@ -1,5 +1,5 @@
 """
-SkillPathForge AI — Analyse Route
+SkillSpark AI — Analyse Route
 -----------------------------------
 POST /api/v1/analyse
 

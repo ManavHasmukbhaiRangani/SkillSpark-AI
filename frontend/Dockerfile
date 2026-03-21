@@ -1,4 +1,4 @@
-# ── SkillPathForge AI — Frontend Dockerfile ──────────────────────
+# ── SkillSpark AI — Frontend Dockerfile ──────────────────────
 # Two-stage build: build with Node, serve with lightweight nginx
 
 # ── Stage 1: Build ────────────────────────────────────────────────

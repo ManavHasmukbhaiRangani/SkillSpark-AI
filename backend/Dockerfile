@@ -1,4 +1,4 @@
-# ── SkillPathForge AI — Backend Dockerfile ───────────────────────
+# ── SkillSpark AI — Backend Dockerfile ───────────────────────
 # Python 3.11 slim — smaller image, faster pulls
 FROM python:3.11-slim
 

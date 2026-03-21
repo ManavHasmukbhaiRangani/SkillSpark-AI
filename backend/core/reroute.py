@@ -1,5 +1,5 @@
 """
-SkillPathForge AI — Re-route Engine
+SkillSpark AI — Re-route Engine
 -------------------------------------
 Manages the learning pathway state and handles
 skill skipping with automatic path recalculation.

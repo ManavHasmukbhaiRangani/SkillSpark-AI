@@ -1,5 +1,5 @@
 """
-SkillPathForge AI — Claude Prompt Templates
+SkillSpark AI — Claude Prompt Templates
 ---------------------------------------------
 All prompt templates for Claude API calls.
 
@@ -20,7 +20,7 @@ Two prompt templates:
 # ── System prompt — shared base ───────────────────────────────────
 
 BASE_SYSTEM_PROMPT: str = """
-You are SkillPathForge AI — an expert learning pathway advisor
+You are SkillSpark AI — an expert learning pathway advisor
 specialising in corporate onboarding and skill development.
 
 Your role is STRICTLY to generate clear, professional, human-readable

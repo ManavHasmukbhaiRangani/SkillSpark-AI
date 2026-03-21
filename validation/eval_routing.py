@@ -1,5 +1,5 @@
 """
-SkillPathForge AI — Domain Routing Validation Script
+SkillSpark AI — Domain Routing Validation Script
 ------------------------------------------------------
 Validates domain classifier accuracy on sample JDs.
 Tests whether desk vs operational roles are correctly
@@ -228,7 +228,7 @@ def run_evaluation():
     """
     Runs domain routing evaluation on ground truth JDs.
     """
-    print("SkillPathForge AI — Domain Routing Validation")
+    print("SkillSpark AI — Domain Routing Validation")
     print("=" * 50)
 
     results      = []

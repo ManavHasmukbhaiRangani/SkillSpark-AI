@@ -1,5 +1,5 @@
 /**
- * SkillPathForge AI — Gap Bar Chart
+ * SkillSpark AI — Gap Bar Chart
  * Shows candidate confidence vs required confidence per skill.
  * Makes the confidence scoring formula visible to judges.
  */
