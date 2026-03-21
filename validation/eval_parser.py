@@ -25,8 +25,8 @@ from pathlib import Path
 # Add backend to path
 sys.path.insert(0, str(Path(__file__).parent.parent / "backend"))
 
-from nlp.extractor import get_extractor
-from nlp.normaliser import get_normaliser
+from backend.nlp.extractor import get_extractor
+from backend.nlp.normaliser import get_normaliser
 
 
 # ── Ground truth samples ──────────────────────────────────────────
