@@ -4,7 +4,7 @@
  * Handles upload → analyse → generate flow.
  */
 
-import { useState, useCallback } from "react";
+import { useState, useCallback, useRef, useEffect } from "react";
 import {
   uploadFile,
   analyseGaps,
@@ -45,6 +45,16 @@ const initialState = {
 
 export const usePathway = () => {
   const [state, setState] = useState(initialState);
+
+  // Ref that always mirrors current state synchronously.
+  // Callbacks that need to read state without closing over it
+  // (analyse, generate) read from this ref instead of from the
+  // state variable — avoids both stale closures and the async
+  // batching issue with the functional-setState read pattern.
+  const stateRef = useRef(initialState);
+  useEffect(() => {
+    stateRef.current = state;
+  });
 
   // ── Update state helper ───────────────────────────────────────
   const update = useCallback((updates) => {
@@ -92,15 +102,9 @@ export const usePathway = () => {
 
   // ── Step 3: Analyse gaps ──────────────────────────────────────
   const analyse = useCallback(async () => {
-    // Read current values via functional setState to avoid capturing
-    // a stale closure — state spread into the dependency array means
-    // any unrelated field change (e.g. loading) re-creates this
-    // callback with potentially out-of-date text values.
-    let resumeText, jdText, jobTitle, domain;
-    setState((prev) => {
-      ({ resumeText, jdText, jobTitle, domain } = prev);
-      return prev; // no change, just reading
-    });
+    // Read from stateRef — always current, always synchronous,
+    // no stale closure, no async batching issue.
+    const { resumeText, jdText, jobTitle, domain } = stateRef.current;
 
     if (!resumeText || !jdText) {
       update({ error: "Please upload both resume and JD first" });
@@ -143,13 +147,8 @@ export const usePathway = () => {
 
   // ── Step 4: Generate pathway ──────────────────────────────────
   const generate = useCallback(async (knownSkills = []) => {
-    // Same pattern as analyse — read current state values without
-    // closing over the state object in the dependency array.
-    let resumeText, jdText, jobTitle, domain;
-    setState((prev) => {
-      ({ resumeText, jdText, jobTitle, domain } = prev);
-      return prev;
-    });
+    // Same stateRef pattern — read current values synchronously.
+    const { resumeText, jdText, jobTitle, domain } = stateRef.current;
 
     update({ loading: true, error: null });
 
