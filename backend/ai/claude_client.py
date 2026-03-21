@@ -27,7 +27,7 @@ load_dotenv()
 # ── Config ────────────────────────────────────────────────────────
 
 CLAUDE_MODEL:  str = "claude-sonnet-4-6"
-GEMINI_MODEL:  str = "gemini-1.5-flash"
+GEMINI_MODEL:  str = "gemini-2.0-flash-lite"
 MAX_TOKENS:    int = 2048
 TEMPERATURE:   float = 0.1
 
