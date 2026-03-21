@@ -13,7 +13,7 @@ your logic — zero hallucination from malformed data.
 """
 
 from typing import Optional
-from pydantic import BaseModel, Field, validator
+from pydantic import BaseModel, Field, field_validator
 
 
 # ══════════════════════════════════════════════════════════════════
@@ -61,7 +61,8 @@ class AnalyseRequest(BaseModel):
         description="Force domain: 'tech' or 'ops'. Auto-detected if None."
     )
 
-    @validator("domain")
+    @field_validator("domain")
+    @classmethod
     def validate_domain(cls, v):
         if v is not None and v not in {"tech", "ops"}:
             raise ValueError("domain must be 'tech' or 'ops'")
@@ -101,7 +102,8 @@ class PathwayRequest(BaseModel):
         description="Skills candidate already knows — pre-skipped"
     )
 
-    @validator("domain")
+    @field_validator("domain")
+    @classmethod
     def validate_domain(cls, v):
         if v not in {"tech", "ops"}:
             raise ValueError("domain must be 'tech' or 'ops'")
@@ -120,7 +122,7 @@ class RerouteRequest(BaseModel):
     )
     current_path:  list[str] = Field(
         ...,
-        min_items=1,
+        min_length=1,
         description="Current ordered pathway"
     )
     skipped:       list[str] = Field(
