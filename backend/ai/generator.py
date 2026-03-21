@@ -305,9 +305,13 @@ async def generate_pathway(
                 skill_id, all_skill_ids
             )
 
+            gap_dict = next(
+                (g for g in gaps_dicts if g["skill_id"] == skill_id),
+                {},
+            )
             trace = build_fallback_trace(
                 skill_id=skill_id,
-                gap=gaps_dicts[0] if gaps_dicts else {},
+                gap=gap_dict,
                 catalog=catalog_entry,
                 prerequisites=prereqs,
                 unlocks=unlocks,
