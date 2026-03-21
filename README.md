@@ -2,7 +2,7 @@
 
 > AI-powered adaptive onboarding engine that diagnoses skill gaps and generates personalised, dependency-aware learning pathways for job readiness.
 
-Built for **ARTPARK CodeForge Hackathon 2025** — AI-Adaptive Onboarding Engine Challenge.
+Built for **ARTPARK CodeForge Hackathon 2026** — AI-Adaptive Onboarding Engine Challenge.
 
 ---
 
