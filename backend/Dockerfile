@@ -24,8 +24,6 @@ RUN python -m spacy download en_core_web_lg
 # ── Application code ──────────────────────────────────────────────
 COPY . .
 
-COPY ../data /data
-
 # ── Environment ───────────────────────────────────────────────────
 ENV PYTHONUNBUFFERED=1
 ENV PYTHONDONTWRITEBYTECODE=1
