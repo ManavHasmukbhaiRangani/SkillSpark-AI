@@ -126,10 +126,14 @@ async def pathway(
             domain=domain,
         )
 
+        # JD skills need a required confidence level (how proficient
+        # the role demands) which is separate from importance_weight
+        # (how critical the skill is to the role). Using importance as
+        # required_confidence conflates two different concepts and
+        # produces incorrect gap scores. Default required level = 0.80.
+        JD_REQUIRED_CONFIDENCE = 0.80
         jd_skills_map: dict[str, float] = {
-            s.canonical_name: get_skill_importance(
-                s.canonical_name
-            )
+            s.canonical_name: JD_REQUIRED_CONFIDENCE
             for s in jd_normalised
         }
 

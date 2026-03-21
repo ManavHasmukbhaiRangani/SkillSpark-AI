@@ -148,11 +148,14 @@ async def analyse(
         )
 
         # Build JD requirements map
-        # JD skills get importance weight from catalog
-        jd_skills_map: dict[str, float] = {}
-        for skill in jd_normalised:
-            importance = get_skill_importance(skill.canonical_name)
-            jd_skills_map[skill.canonical_name] = importance
+        # required_confidence = proficiency level the role demands (fixed 0.80)
+        # importance_weight   = how critical the skill is (fetched separately)
+        # These are distinct concepts — conflating them produces wrong gap scores.
+        JD_REQUIRED_CONFIDENCE = 0.80
+        jd_skills_map: dict[str, float] = {
+            skill.canonical_name: JD_REQUIRED_CONFIDENCE
+            for skill in jd_normalised
+        }
 
         # ── Step 5 — Build SkillScore objects ─────────────────────
         all_skill_ids = get_all_skill_ids()
