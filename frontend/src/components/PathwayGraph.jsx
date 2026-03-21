@@ -4,7 +4,7 @@
  * Uses React Flow for dependency-aware visualisation.
  */
 
-import { useCallback, useMemo } from "react";
+import { useEffect, useMemo } from "react";
 import {
   ReactFlow,
   Background,
@@ -134,8 +134,16 @@ const PathwayGraph = ({ modules = [], onSelectModule }) => {
     [modules, onSelectModule]
   );
 
-  const [nodes, , onNodesChange] = useNodesState(initialNodes);
-  const [edges, , onEdgesChange] = useEdgesState(initialEdges);
+  const [nodes, setNodes, onNodesChange] = useNodesState(initialNodes);
+  const [edges, setEdges, onEdgesChange] = useEdgesState(initialEdges);
+
+  // Sync React Flow internal state whenever modules change (e.g. after
+  // skip / complete). useNodesState only uses its argument on first render,
+  // so without this the graph stays frozen after the initial paint.
+  useEffect(() => {
+    setNodes(initialNodes);
+    setEdges(initialEdges);
+  }, [initialNodes, initialEdges, setNodes, setEdges]);
 
   if (!modules.length) {
     return (
