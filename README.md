@@ -114,7 +114,7 @@ SkillSpark-AI/
 
 ### 1. Clone the repository
 ```bash
-git clone https://github.com/yourteam/SkillSpark-AI.git
+git clone https://github.com/ManavHasmukbhaiRangani/SkillSpark-AI.git
 cd SkillSpark-AI
 ```
 
